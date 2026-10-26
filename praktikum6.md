@@ -23,6 +23,7 @@ kasutajate ligipääs oleks piiratud. `Umask` määrab, millised õigused edaspi
 
 ### Ülesanne 5: opetaja/klass failide õigused
 `setuid` õigust on vaja, et faili käivatmise ajal rakenduksid faili omaniku, mitte käivitaja õigused.
+  
 <img width="952" height="1126" alt="image" src="https://github.com/user-attachments/assets/9e768dfa-1f4c-44bc-a1e7-51dc37ea86b2" />
 
 ### Ülesanne 6: Setuid plussid ja miinused
