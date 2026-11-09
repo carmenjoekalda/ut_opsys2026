@@ -2,8 +2,7 @@
 Operatsioonisüsteemide kursuse kaheksas praktikum. Aega kulus 2 tundi.
 
 Praktikumi käigus tegelesin erinevate andmete varundamise põhimõtetega. Seadistasin nii Windows 11 kui ka Ubuntu virtuaalmasinates
-RAID 1 peegelmassiivid ning simuleerisin kõvaketta füüsilist riket ja taastasin need. Lisaks seadistasin TÜ Nextcloudi ja OneDrive
-pilvevarunduse.
+RAID 1 peegelmassiivid ning simuleerisin kõvaketta füüsilist riket ja taastasin need. Lisaks seadistasin TÜ Nextcloudi ja OneDrive pilvevarunduse.  
 Juhend: https://courses.cs.ut.ee/2026/os/fall/Main/Praktikum8
 
 ## Tõestus
