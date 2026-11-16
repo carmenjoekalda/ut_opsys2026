@@ -15,3 +15,18 @@ PWD=/home/carmen
 Valisin kustutamiseks `aspell-en` tarkvara, mis tegeleb ingliskeelse õigekirjakontrolliga, ma isiklikult ei näe, et mul selles aines seda vaja läheks.
 Pildilt ilmneb, et selle kustutamise käigus vabastati 439 kB kettaruumi.
 <img width="1919" height="1197" alt="image" src="https://github.com/user-attachments/assets/b318ac77-1d2a-4257-b823-daf392dbb110" />
+
+### Ülesanne 4: Faili käivitamine tühjas kaustas
+<img width="1919" height="1197" alt="image" src="https://github.com/user-attachments/assets/20836826-596e-4369-bce5-67aefdb441f6" />
+
+### Ülesanne 5: Failide prioriteetsus
+Esialgu proovib Windows leida faili kaustast, kus kasutaja hetkel asub, seejärel süsteemi `%Path%` keskkonnamuutujas määratud kaustadest ning viimasena kasutaja `%Path%` keskkonnamuutujas määratud kaustadest.
+
+### Ülesanne 6: Windowsi teenuse vajadus
+Teenus `Juhtpaneeli Probleemiteated tugi (wercplsupport)` pakub tuge süsteemitaseme probleemiteadete kuvamiseks, edastamiseks ja kustutamiseks vastaval juhtpaneelil. Igapäevases kasutuses see vajalik ei ole ning sellest ei sõltu teiste programmide töö, seega võib selle määrata olekusse `Disabled`.
+
+### Ülesanne 7: 
+<img width="1919" height="1199" alt="image" src="https://github.com/user-attachments/assets/6247f4c2-55e1-4116-8381-0bf7653a9492" />
+
+
+
