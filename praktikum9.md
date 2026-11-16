@@ -1,4 +1,4 @@
-# Praktikum 9 - xx
+# Praktikum 9 - Teenused ja optimeerimine
 Operatsioonisüsteemide kursuse üheksas praktikum. Aega kulus 3-4 tundi.
 
 Praktikumi käigus tegelesin keskkonnamuutujate ja aliastega. Haldasin taustateenuseid ning eemaldasin ebavajalikku tarkvara ja pakette. Uuendasin Ubuntu virtuaalmasina versioonile 26.10. 
