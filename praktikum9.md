@@ -1,7 +1,7 @@
 # Praktikum 9 - xx
-Operatsioonisüsteemide kursuse üheksas praktikum. Aega kulus x tundi.
+Operatsioonisüsteemide kursuse üheksas praktikum. Aega kulus 3-4 tundi.
 
-Praktikumi käigus tegelesin xx  
+Praktikumi käigus tegelesin keskkonnamuutujate ja aliastega. Haldasin taustateenuseid ning eemaldasin ebavajalikku tarkvara ja pakette. Uuendasin Ubuntu virtuaalmasina versioonile 26.10. 
 Juhend: https://courses.cs.ut.ee/2026/os/fall/Main/Praktikum9
 
 ## Tõestus
@@ -25,8 +25,8 @@ Esialgu proovib Windows leida faili kaustast, kus kasutaja hetkel asub, seejäre
 ### Ülesanne 6: Windowsi teenuse vajadus
 Teenus `Juhtpaneeli Probleemiteated tugi (wercplsupport)` pakub tuge süsteemitaseme probleemiteadete kuvamiseks, edastamiseks ja kustutamiseks vastaval juhtpaneelil. Igapäevases kasutuses see vajalik ei ole ning sellest ei sõltu teiste programmide töö, seega võib selle määrata olekusse `Disabled`.
 
-### Ülesanne 7: 
+### Ülesanne 7: AppX abil paki tuvastamine ja eemaldamine
 <img width="1919" height="1199" alt="image" src="https://github.com/user-attachments/assets/6247f4c2-55e1-4116-8381-0bf7653a9492" />
 
-
-
+### Ülesanne 8: Ubuntu uuendus versioonile 26.10
+<img width="1919" height="1199" alt="image" src="https://github.com/user-attachments/assets/78cc650a-548f-44ae-a7b1-fa5c923c3a42" />
