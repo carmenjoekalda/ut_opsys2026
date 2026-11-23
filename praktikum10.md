@@ -1,20 +1,27 @@
+# Praktikum 10 - Ressursihaldus
+Operatsioonisüsteemide kursuse kümnes praktikum. Aega kulus 4 tundi.
+
+Praktikumi käigus kasuitasin Linuxi terminali ning Windowsi graafilisi lahendusi, et uurida mõlema virtuaalmasina protsesside ja ressursside kohta.
+Juhend: https://courses.cs.ut.ee/2026/os/fall/Main/Praktikum10
+
+## Tõestus
 | Küsimus / Ülesanne | Linux | Windows | Linuxis kasutatud käsklus | Windowsis kasutatud tööriist ja väli |
 | :--- | :--- | :--- | :--- | :--- |
-| **1.** Mitu protsessi kokku arvutis käivitatud on? | 280 | | ps -ef \| wc -l | |
-| **2.** Milline on kõige esimesena käivitatud protsess? | systemd | | ps -eo pid,comm --sort=pid | |
-| **3.** Milliste kasutajate protsessid arvutis töötavad? | avahi, carmen, _chrony, colord, cups-browsed, messagebus, polkitd, root, rtkit, syslog, systemd-oom, systemd-resolve| | ps -eo user \| sort -u | |
-| **4.** Kui kaua on arvuti järjest töötanud? | 26 min | | uptime | |
-| **5.** Milline protsess käivitati viimasena? | kworker/1:1 | | ps -eo pid,comm,lstart --sort=-lstart| |
-| **6.** Milline protsess võtab vaatlushetkel kõige rohkem protsessoriaega ja mitu protsenti protsessoriajast ta tarbib? | gnome-shell, 3.7% | | ps -eo pcpu,pid,user,comm --sort=-pcpu | |
-| **7.** Milline on kõige rohkem virtuaalmälu võttev protsess? | gnome-shell | | ps -eo vsz,pid,user,comm --sort=-vsz | |
-| **8.** Milline on kõige rohkem füüsilist mälu võttev protsess? | gnome-shell | | ps -eo rss,pid,user,comm --sort=-rss | |
-| **9.** Kui palju füüsilisest mälust on vaba ja kui palju hõivatud? | available: 1.6Gi <br> used: 1.7Gi | | free -h | |
-| **10.** Kui palju on põhikettal vaba ruumi mahult ja protsentuaalselt? | 6.1G, 26% | | df -h / | |
-| **11.** Milline on kõige suurem arvutis olev fail ja kõige rohkem andmemahtu hõivav kaust? | `fail`: /swap.img, 3.6G <br> `kaust`: /usr, 8.8G | | `fail`: sudo find / -xdev -type f -size +100M -exec ls -lh {} + \| sort -k5,5 -h -r \| head <br>  `kaust`: sudo du -h --max-depth=1 / 2>/dev/null \| sort -hr  | |
+| **1.** Mitu protsessi kokku arvutis käivitatud on? | 280 | 149 | ps -ef \| wc -l | Tegumihaldur -> Jõudlus -> CPU -> Protsessid|
+| **2.** Milline on kõige esimesena käivitatud protsess? | systemd | Süsteemi jõudeoleku protsess | ps -eo pid,comm --sort=pid | Tegumihaldur -> Üksikasjad -> PID, järjestatud kasvavalt -> esimene |
+| **3.** Milliste kasutajate protsessid arvutis töötavad? | avahi, carmen, _chrony, colord, cups-browsed, messagebus, polkitd, root, rtkit, syslog, systemd-oom, systemd-resolve| SYSTEM, NETWORK SERVICE, LOCAL SERVICE, DWM-1, admin, UMFD-0, UMFD-1| ps -eo user \| sort -u | Tegumihaldur -> Üksikasjad -> Kasutajanimi |
+| **4.** Kui kaua on arvuti järjest töötanud? | 26 min | 7 min | uptime | Tegumihaldur -> Jõudlus -> CPU -> Tööaeg |
+| **5.** Milline protsess käivitati viimasena? | kworker/1:1 | VBoxService.exe | ps -eo pid,comm,lstart --sort=-lstart | Tegumihaldur -> Üksikasjad -> PID, järjestatud kahanevalt -> esimene |
+| **6.** Milline protsess võtab vaatlushetkel kõige rohkem protsessoriaega ja mitu protsenti protsessoriajast ta tarbib? | gnome-shell, 3.7% | Microsoft Compatibility Telemetry, 11.6% | ps -eo pcpu,pid,user,comm --sort=-pcpu | Tegumihaldur -> Protsessid -> Protsessor, järjestatud kahanevalt -> esimene |
+| **7.** Milline on kõige rohkem virtuaalmälu võttev protsess? | gnome-shell | Microsoft Defender Antimalware Service | ps -eo vsz,pid,user,comm --sort=-vsz | Tegumihaldur -> Üksikasjad -> Hõivatud osa suurus, järjestatud kahanevalt -> esimene |
+| **8.** Milline on kõige rohkem füüsilist mälu võttev protsess? | gnome-shell | Microsoft Defender Antimalware Service | ps -eo rss,pid,user,comm --sort=-rss | Tegumihaldur -> Protsessid -> Mälu, järjestatud kahanevalt -> esimene |
+| **9.** Kui palju füüsilisest mälust on vaba ja kui palju hõivatud? | Vaba: 2.04 Gi, 57.6% <br> Hõivatud: 1.6 Gi, 45.5%  | Vaba: 1.9 GB, 23.7% <br> Hõivatud: 2.1 GB, 28.9% | free -h | Tegumihaldur -> Jõudlus -> Mälu -> Kasutusel / Saadaval |
+| **10.** Kui palju on põhikettal vaba ruumi mahult ja protsentuaalselt? | 6.1G, 26% | 21.2 GB, 33.7% | df -h / | File Explorer -> See arvuti -> C: ketas -> Atribuudid -> Vaba ruumi |
+| **11.** Milline on kõige suurem arvutis olev fail ja kõige rohkem andmemahtu hõivav kaust? | `fail`: /swap.img, 3.6G <br> `kaust`: /usr, 8.8G | `fail`: C:\Windows\ServiceProfiles\NetworkService\ AppData\Local\Microsoft\Windows\DeliveryOptimization\ Cache\53a445d4-db48-419d-bb5e-1b613bcc3efa\content.bin <br> `kaust`: C:\Windows | `fail`: sudo find / -xdev -type f -size +100M -exec ls -lh {} + \| sort -k5,5 -h -r \| head <br>  `kaust`: sudo du -h --max-depth=1 / 2>/dev/null \| sort -hr  | `fail`: WinDirStat -> Suurimad failid -> Loogiline suurus, järjestatud kahanevalt -> esimene <br> `kaust`: WinDirStat -> Kõik failid -> Loogiline suurus, järjestatud kahanevalt -> esimene rida C: ketta all |
 | **12.** Test: protsessikasutus `sha1sum` käsu puhul | 1. us, 92.2% <br> 2. sy, 100% | - | <img width="1919" height="1199" alt="image" src="https://github.com/user-attachments/assets/03403b06-7431-4f93-8ae1-4e6af7c64d66" /> <img width="1919" height="1199" alt="image" src="https://github.com/user-attachments/assets/f54639ca-53f7-447e-825d-0465dd512085" /> | - |
-| **13.1.** Milline protsess kirjutab kõige rohkem salvestusseadmele? | - | | - | |
-| **13.2.** Millisesse faili eelmise küsimuse protsess kõige rohkem kirjutab? | - | | - | |
-| **13.3.** Milline protsess loeb kõige rohkem salvestusseadmelt? | - | | - | |
-| **13.4.** Millisest failist eelmise küsimuse protsess kõige rohkem loeb? | - | | - | |
-| **14.** Millise protsessi tekitatud võrguliiklus on suurima mahuga? + detailid | - | | - | |
-| **15.** Aeglase arvuti diagnostika | - | | - | |
+| **13.1.** Milline protsess kirjutab kõige rohkem salvestusseadmele? | - | System | - | Resource Monitor -> Disk -> Processes with Disk Activity -> Write (B/sec) järjestatud kahanevalt -> esimene |
+| **13.2.** Millisesse faili eelmise küsimuse protsess kõige rohkem kirjutab? | - | C:\Windows\SoftwareDistribution\Download\...\ ntoskrnl.exe | - | Resource Monitor -> Disk -> esimeses tabelis on linnukesega märgitud eelmise ülesande vastus <br> Resource Monitor -> Disk -> Disk Activity -> Write (B/sec), järjestatud kahanevalt -> esimene |
+| **13.3.** Milline protsess loeb kõige rohkem salvestusseadmelt? | - | System | - | Resource Monitor -> Disk -> Processes with Disk Activity -> Read (B/sec) järjestatud kahanevalt -> esimene |
+| **13.4.** Millisest failist eelmise küsimuse protsess kõige rohkem loeb? | - | C:\$WinREAgent\Scratch\Mount\Windows\System32\ config\SYSTEM	| - | Resource Monitor -> Disk -> esimeses tabelis on linnukesega märgitud eelmise ülesande vastus <br> Resource Monitor -> Disk -> Disk Activity -> Read (B/sec), järjestatud kahanevalt -> esimene |
+| **14.** Millise protsessi tekitatud võrguliiklus on suurima mahuga? + detailid | - |  Kohalik IP-aadress: 10.0.2.15 <br> Kohalik port: 63915 <br> Teise poole IP-aadress: 4.150.223.102 <br> Port: 443 <br> Latentsus: 1ms <br> Ühenduse võrguliikluse kogumaht: 15B | - | <img width="1919" height="1198" alt="image" src="https://github.com/user-attachments/assets/b1bacf25-55c8-487c-898c-848991dac2cb" />|
+| **15.** Aeglase arvuti diagnostika | - | 1. Mitu % ressurssi igas veerus kokku hõivatud on? Kas mõni hakkab lähenema 100%-le? Sorteerida kõiki veergusid kahanevas järjekorras, kas mõni üksik protsess kasutab mitukümmend protsenti kogu ressursist? <br> 2. Kas mõnel vahelehel on graafikul näha märgatavalt suuri tõuse või järske hüppeid? Mis on CPU vahelehel tööaeg, kiirus & kasutus? Palju Mälu vahelehel saadava kogumahu suurus on, kas hakkab otsakorrale jõudma? Palju Disk vahelehel reageerimisaeg on? Kas see on alla 100 ms? <br> 3. Mis kõige rohkem faile kirjutab ja loeb? | - | 1. Tegumihaldur -> Protsessid -> CPU / Mälu / Ketas / Võrk <br> 2. Tegumihaldur -> Jõudlus <br> 3. Resource Monitor -> Disk -> Disk Activity
